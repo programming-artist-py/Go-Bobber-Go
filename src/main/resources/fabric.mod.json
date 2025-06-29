@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "gobobbergo",
+	"version": "${version}",
+	"name": "gobobbergo",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"10bcpu"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/gobobbergo/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.tenbcpu.Gobobbergo"
+		],
+		"client": [
+			"com.tenbcpu.GobobbergoClient"
+		]
+	},
+	"mixins": [
+		"gobobbergo.mixins.json",
+		{
+			"config": "gobobbergo.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
