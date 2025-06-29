@@ -13,3 +13,9 @@ Now you can! Whether you want to reach that tricky spot across the lake or just 
 - Fully compatible with vanilla fishing mechanics.
 
 Get ready to cast farther, explore more, and maybe even fish from twenty blocks away!
+
+
+#Available on modrinth!
+https://modrinth.com/mod/go-bobber-go/
+
+(if unavailable or not there, probably still under review)
