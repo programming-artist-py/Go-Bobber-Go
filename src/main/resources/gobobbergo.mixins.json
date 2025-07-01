@@ -1,14 +1,14 @@
 {
-	"required": true,
-	"package": "com.tenbcpu.mixin",
-	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"FishingBobberEntityMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
-	}
+  "required": true,
+  "package": "com.tenbcpu.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "FishingBobberEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
 }

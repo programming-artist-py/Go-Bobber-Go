@@ -1,12 +1,12 @@
 package com.tenbcpu.mixin;
 
+import com.tenbcpu.ModComponents;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FishingBobberEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.Vec3d;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,7 +19,7 @@ public class FishingBobberEntityMixin {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void modifyVelocity(CallbackInfo ci) {
-        if (velocityModified) return; // Only modify once
+        if (velocityModified) return;
 
         FishingBobberEntity self = (FishingBobberEntity)(Object)this;
         Entity owner = self.getOwner();
@@ -27,11 +27,15 @@ public class FishingBobberEntityMixin {
         if (owner instanceof PlayerEntity player) {
             ItemStack stack = player.getMainHandStack();
 
-            if (stack.getItem() == Items.FISHING_ROD && stack.hasNbt() && stack.getNbt().contains("Power")) {
-                double power = stack.getNbt().getDouble("Power");
-                Vec3d vel = self.getVelocity();
-                self.setVelocity(vel.multiply(power));
-                velocityModified = true;
+            if (stack.getItem() == Items.FISHING_ROD) {
+                // Get the Power component value from the ItemStack (defaults to 1.0 if missing)
+                Double power = stack.getOrDefault(ModComponents.POWER, 1.0);
+
+                if (power != null && power != 1.0) {
+                    Vec3d vel = self.getVelocity();
+                    self.setVelocity(vel.multiply(power));
+                    velocityModified = true;
+                }
             }
         }
     }
